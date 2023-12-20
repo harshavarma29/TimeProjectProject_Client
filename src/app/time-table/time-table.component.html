@@ -1,0 +1,68 @@
+<div>
+    <h2 style="text-align: center;">Professor Time table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Trainer Name</th>
+                <th>Subject Name</th>
+                <th>Subject Duration</th>
+                <th>Classs Timings</th>
+                <th>Mode</th>
+                <th>Class Room</th>
+                <th>Term</th>
+                <th>Batch</th>
+                <th>Attendance Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let subjectDetails of subjectDetailsData">
+                <td>{{subjectDetails.trainerName}}</td>
+                <td>{{subjectDetails.subjectName}}</td>
+                <td>{{subjectDetails.subjectDuration}}</td>
+                <td>{{subjectDetails.classTime}}</td>
+                <td>{{subjectDetails.classMode}}</td>
+                <td>{{subjectDetails.classRoom}}</td>
+                <td>{{subjectDetails.term}}</td>
+                <td>{{subjectDetails.batch}}</td>
+                <td>{{subjectDetails.attendanceType}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--<tr *ngFor="let subjectDetails in subjectDetailsData">
+            <td>{{subjectDetails.trainerName}}</td>
+            <td>{{subjectDetails.subjectName}}</td>
+            <td>{{subjectDetails.subjectDurationFrom}}</td>
+            <th>{{subjectDetails.subjectDurationTo}}</th>
+            <th>{{subjectDetails.classStartTime}}</th>
+            <th>{{subjectDetails.classEndTime}}</th>
+            <th>{{subjectDetails.classMode}}</th>
+            <th>{{subjectDetails.classRoom}}</th>
+            <th>{{subjectDetails.term}}</th>
+            <th>{{subjectDetails.batch}}</th>
+            <th>{{subjectDetails.attendanceType}}</th>
+
+            <tr>
+            <td>trainerName</td>
+            <td>subjectName</td>
+            <td>classStartTime</td>
+            <td>classEndTime</td>
+            <td>classMode</td>
+            <td>classRoom</td>
+            <td>term</td>
+            <td>batch</td>
+            <td>attendanceType</td>
+        </tr>
+        <tr>
+            <td>trainerName</td>
+            <td>subjectName</td>
+            <td>classStartTime</td>
+            <td>classEndTime</td>
+            <td>classMode</td>
+            <td>classRoom</td>
+            <td>term</td>
+            <td>batch</td>
+            <td>attendanceType</td>
+        </tr>
+        </tr>-->

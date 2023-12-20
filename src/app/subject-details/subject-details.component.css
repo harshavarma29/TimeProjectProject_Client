@@ -1,0 +1,31 @@
+.form-border {
+    border: 2px grey solid;
+    width: 360px;
+    margin: auto;
+    padding: 20px;
+}
+
+.key {
+    display: block;
+    font-size: 18px;
+    margin: 10px 0px;
+}
+
+.value {
+    border: 1px blue solid;
+    border-radius: 50px;
+    width: 80%;
+    font-size: 18px;
+    padding: 4px 12px;
+}
+
+.add-subject-btn {
+    margin-top: 20px;
+}
+
+.add-subject-btn:hover {
+    background-color: blue;
+    color: white;
+    border: 1px white solid;
+    cursor: pointer;
+}

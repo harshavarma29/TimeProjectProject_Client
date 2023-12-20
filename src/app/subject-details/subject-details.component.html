@@ -1,0 +1,75 @@
+<div>
+    <h2 style="text-align: center;">Subject Details Form</h2>
+    <form class='form-border' (submit)="addSubjectDetails()">
+        <label class='key'>Trainer Name:</label>
+        <input class='value' type='text' [(ngModel)]='subjectDetails.trainerName' name='trainerName'/>
+        <label class='key'>Subject Name:</label>
+        <input class='value' type='text' [(ngModel)]='subjectDetails.subjectName' name="subjectName"/>
+        <label class='key'>Subject Duration:</label>
+        <div>
+            <div>
+                <label>From date:</label>
+                <input style='width: 60%;margin: 5px 10px;' 
+                    name='from-time' class='value' type='date' 
+                    placeholder='Select from date'
+                    [(ngModel)]="subjectDetails.subjectDurationFrom" name="fromDate"/>
+            </div>
+            <div>
+                <label>To date:</label>
+                <input style='width: 60%;margin: 5px 10px;' 
+                    name='to-time' class='value' type='date' 
+                    placeholder='Select to date'
+                    [(ngModel)]="subjectDetails.subjectDurationTo" name="toDate"/>
+            </div>
+        </div>
+        <label class='key'>Class Timings:</label>
+        <div>
+            <div>
+                <label>Start time:</label>
+                <input style='width: 60%;margin: 5px 10px;' 
+                    name='from-time' class='value' type='time' 
+                    placeholder='Select from date'
+                    [(ngModel)]="subjectDetails.classStartTime"/>
+            </div>
+            <div>
+                <label>End time:</label>
+                <input style='width: 60%;margin: 5px 10px;' 
+                    name='to-time' class='value' type='time' 
+                    placeholder='Select to date'
+                    [(ngModel)]="subjectDetails.classEndTime"/>
+            </div>
+        </div>
+        <label class='key'>Mode:</label>
+        <select class='value' [(ngModel)]='subjectDetails.classMode' name="classMode">
+            <option value='Class'>Class</option>
+            <option value='Online'>Online</option>
+        </select>
+        <label class='key'>Class Room:</label>
+        <select class='value' [(ngModel)]="subjectDetails.classRoom" name="classRoom">
+            <option value='Block-1'>Block-1</option>
+            <option value='Block-2'>Block-2</option>
+            <option value='Block-3'>Block-3</option>
+            <option value='Block-4'>Block-4</option>
+        </select>
+        <label class='key'>Term:</label>
+        <select class='value' [(ngModel)]="subjectDetails.term" name="term">
+            <option value='1'>Term 1</option>
+            <option value='2'>Term 2</option>
+            <option value='3'>Term 3</option>
+            <option value='4'>Term 4</option>
+        </select>
+        <label class='key'>Batch:</label>
+        <select class='value' [(ngModel)]="subjectDetails.batch" name="batch">
+            <option value='Fall Semester'>Fall Semester</option>
+            <option value='Spring Semester'>Spring Semester</option>
+            <option value='Summer Semester'>Summer Semester</option>
+        </select>
+        <label class='key'>Attendance Type:</label>
+        <select class='value' [(ngModel)]="subjectDetails.attendanceType" name="attendanceType">
+            <option value='One Hour'>One Hour</option>
+            <option value='Two Hour'>Two Hour</option>
+            <option value='Three Hour'>Three Hour</option>
+        </select>
+        <input class="value add-subject-btn" type='submit' value="Add Subject Details"/>
+    </form>
+</div>
