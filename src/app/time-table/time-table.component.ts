@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SubjectService } from '../subject.service';
 
 import { HttpClient } from "@angular/common/http";
 import { map } from 'rxjs/operators'
@@ -11,10 +10,10 @@ import { map } from 'rxjs/operators'
 })
 export class TimeTableComponent implements OnInit {
 
-  subjectDetailsData: any;//this.subjectService.getSubjectDetails();
+  subjectDetailsData: any;
   endpointUrl = 'https://localhost:8003/timetable/details';
 
-  constructor(private subjectService: SubjectService, private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
     this.httpClient.get(this.endpointUrl+'/get')
@@ -26,12 +25,9 @@ export class TimeTableComponent implements OnInit {
                     subjectDetails.push({ ...(responseData as any)[key] })
                 }
             }
-            console.log('response init --> ');
-            console.log(subjectDetails);
             return subjectDetails;
         })
-    )
-    .subscribe(responseData => this.subjectDetailsData = responseData)
-      }
+    ).subscribe(responseData => this.subjectDetailsData = responseData)
+  }
 
 }
