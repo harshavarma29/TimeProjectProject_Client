@@ -1,6 +1,14 @@
+.class-name {
+    margin-top: 28px;
+    font-size: 22px;
+}
+
 table {
     margin: auto;
     border: 1px solid grey;
+    width: 100%;
+    margin-top: 8px;
+    font-size: 18px;
 }
 
 th {
@@ -12,3 +20,29 @@ td {
     padding: 10px;
     border: 1px solid grey;
 }
+
+.timetable-block {
+    margin: auto;
+    margin-top: 50px;
+    width: 84%;
+}
+
+.value {
+    border-radius: 50px;
+    width: 200px;
+    font-size: 18px;
+    padding: 4px 12px;
+}
+
+.subject-name {
+    color: skyblue;
+    text-align: center;
+}
+
+.professor-name {
+    text-align: center;
+}
+/*
+#66cf6e
+#e48f4a
+*/

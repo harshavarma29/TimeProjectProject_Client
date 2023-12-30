@@ -1,31 +1,38 @@
-<div>
-    <h2 style="text-align: center;">Professor Time table</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Trainer Name</th>
-                <th>Subject Name</th>
-                <th>Subject Duration</th>
-                <th>Classs Timings</th>
-                <th>Mode</th>
-                <th>Class Room</th>
-                <th>Term</th>
-                <th>Batch</th>
-                <th>Attendance Type</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let subjectDetails of subjectDetailsData">
-                <td>{{subjectDetails.trainerName}}</td>
-                <td>{{subjectDetails.subjectName}}</td>
-                <td>{{subjectDetails.subjectDuration}}</td>
-                <td>{{subjectDetails.classTime}}</td>
-                <td>{{subjectDetails.classMode}}</td>
-                <td>{{subjectDetails.classRoom}}</td>
-                <td>{{subjectDetails.term}}</td>
-                <td>{{subjectDetails.batch}}</td>
-                <td>{{subjectDetails.attendanceType}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="timetable-block">
+    <select name="response-ids" class="value" (change)="fetchDetails($event)">
+        <option>Select timetables</option>
+        <option *ngFor="let responseId of responseIds; let id = index" [value]="responseId">Timetable {{id + 1}}</option>
+    </select>
+    <ng-container *ngIf="responseData">
+        <div *ngFor="let gene of responseData.slotNums.gene; let id = index">
+            <div class="class-name">{{responseData.batches[id]}}</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th *ngFor="let duration of durations">{{duration.time}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let day of responseData.days; let row = index">
+                        <td>{{day.day}}</td>
+                        <div *ngIf="initializeCount()"></div>
+                        <td *ngFor="let duration of durations;">
+                            <ng-container *ngIf="duration.timeInMs >= breakStartTime && duration.timeInMs < breakEndTime; else noBreak">
+                                Break
+                                <div *ngIf="decrementCount()"></div>
+                            </ng-container>
+                            <ng-template #noBreak>
+                                <ng-container *ngIf="responseData.slots[gene.slotNum[row*(durations.length-1)+count]] != null">
+                                    <p class="subject-name">{{responseData.slots[gene.slotNum[row*(durations.length-1)+count]].subject}}</p>
+                                    <p class="professor-name">{{responseData.teachers[responseData.slots[gene.slotNum[row*(durations.length-1)+count]].teacherId]}}</p>
+                                </ng-container>
+                            </ng-template>
+                            <div *ngIf="incrementCount()"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ng-container>
 </div>

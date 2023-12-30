@@ -1,75 +1,84 @@
 <div>
-    <h2 style="text-align: center;">Subject Details Form</h2>
-    <form class='form-border' (submit)="addSubjectDetails()">
-        <label class='key'>Trainer Name:</label>
-        <input class='value' type='text' [(ngModel)]='subjectDetails.trainerName' name='trainerName'/>
-        <label class='key'>Subject Name:</label>
-        <input class='value' type='text' [(ngModel)]='subjectDetails.subjectName' name="subjectName"/>
-        <label class='key'>Subject Duration:</label>
-        <div>
+    <form class='form-border' (submit)="addDetails()">
+        <div class="section">
+            <div class="block-title">Time Details</div>
             <div>
-                <label>From date:</label>
-                <input style='width: 60%;margin: 5px 10px;' 
-                    name='from-time' class='value' type='date' 
-                    placeholder='Select from date'
-                    [(ngModel)]="subjectDetails.subjectDurationFrom" name="fromDate"/>
+                <label for="college-start-time" class="key">College start time:</label>
+                <input type="time" name="college-start-time" id="college-start-time" class="value" [(ngModel)]="scheduleDetails.schoolStartTime"/>
             </div>
-            <div>
-                <label>To date:</label>
-                <input style='width: 60%;margin: 5px 10px;' 
-                    name='to-time' class='value' type='date' 
-                    placeholder='Select to date'
-                    [(ngModel)]="subjectDetails.subjectDurationTo" name="toDate"/>
-            </div>
-        </div>
-        <label class='key'>Class Timings:</label>
-        <div>
-            <div>
-                <label>Start time:</label>
-                <input style='width: 60%;margin: 5px 10px;' 
-                    name='from-time' class='value' type='time' 
-                    placeholder='Select from date'
-                    [(ngModel)]="subjectDetails.classStartTime"/>
-            </div>
-            <div>
-                <label>End time:</label>
-                <input style='width: 60%;margin: 5px 10px;' 
-                    name='to-time' class='value' type='time' 
-                    placeholder='Select to date'
-                    [(ngModel)]="subjectDetails.classEndTime"/>
+            <div class="block">
+                <div class="element">
+                    <label for="classes-per-day" class="key">Classes per day:</label>
+                    <input type="text" name="classes-per-day"  id="classes-per-day" class="value" [(ngModel)]="scheduleDetails.classesPerDay"/>
+                </div>
+                <div class="element">
+                    <label for="classes-per-day" class="key">Classe Duration:</label>
+                    <input type="time" name="classes-per-day"  id="classes-per-day" class="value" [(ngModel)]="scheduleDetails.classDuration"/>
+                </div>
+                <div class="element">
+                    <label for="break-start-time" class="key">Break start time:</label>
+                    <input type="time" id="break-start-time" class="value" (change)="onChangeBreakStartTime($event)"/>
+                </div>
+                <div class="element">
+                    <label for="break-end-time" class="key">Break end time:</label>
+                    <input type="time" id="break-end-time" class="value" (change)="onChangeBreakEndTime($event)"/>
+                </div>
             </div>
         </div>
-        <label class='key'>Mode:</label>
-        <select class='value' [(ngModel)]='subjectDetails.classMode' name="classMode">
-            <option value='Class'>Class</option>
-            <option value='Online'>Online</option>
-        </select>
-        <label class='key'>Class Room:</label>
-        <select class='value' [(ngModel)]="subjectDetails.classRoom" name="classRoom">
-            <option value='Block-1'>Block-1</option>
-            <option value='Block-2'>Block-2</option>
-            <option value='Block-3'>Block-3</option>
-            <option value='Block-4'>Block-4</option>
-        </select>
-        <label class='key'>Term:</label>
-        <select class='value' [(ngModel)]="subjectDetails.term" name="term">
-            <option value='1'>Term 1</option>
-            <option value='2'>Term 2</option>
-            <option value='3'>Term 3</option>
-            <option value='4'>Term 4</option>
-        </select>
-        <label class='key'>Batch:</label>
-        <select class='value' [(ngModel)]="subjectDetails.batch" name="batch">
-            <option value='Fall Semester'>Fall Semester</option>
-            <option value='Spring Semester'>Spring Semester</option>
-            <option value='Summer Semester'>Summer Semester</option>
-        </select>
-        <label class='key'>Attendance Type:</label>
-        <select class='value' [(ngModel)]="subjectDetails.attendanceType" name="attendanceType">
-            <option value='One Hour'>One Hour</option>
-            <option value='Two Hour'>Two Hour</option>
-            <option value='Three Hour'>Three Hour</option>
-        </select>
-        <input class="value add-subject-btn" type='submit' value="Add Subject Details"/>
+
+        <div class="section">
+            <div class="block-title">Number of days per week</div>
+            <div class="block">
+                <div class="checkbox-element" *ngFor="let day of scheduleDetails.days">
+                    <input name="scheduleDetails" type="checkbox" [id]="day.day" [(ngModel)]="day.selected"/>
+                    <label [for]="day.day" class="checkbox-value">{{day.day}}</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="block-title">Teachers</div>
+                <div class="block">
+                    <div *ngFor="let teacher of scheduleDetails.teachers; let id = index">
+                        <div class="element">
+                            <label for="college-start-time" class="key">Name:</label>
+                            <input type="text" [name]="scheduleDetails + '_' + id" id="college-start-time" class="value" [(ngModel)]="scheduleDetails.teachers[id].name"/>
+                        </div>
+                        <div class="element">
+                            <label for="hours-per-day" class="key">Subject:</label>
+                            <input type="text" [name]="scheduleDetails + '_' + id" id="hours-per-day" class="value" [(ngModel)]="scheduleDetails.teachers[id].subject"/>
+                        </div>
+                    </div>
+                    <button class="form-btn" (click)="addTeacher()" type="button">Add one more teacher</button>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="block-title">Class Details</div>
+                <div class="block">
+                    <div style="margin-top: 24px;" *ngFor="let class of scheduleDetails.batches; let i = index">
+                        <div style="margin: 8px 4px;">
+                            <label for="class-name" class="key">Class name</label>
+                            <input type="text" [name]="scheduleDetails + '_' + i" id="class-name" class="value" [(ngModel)]="scheduleDetails.batches[i].className"/>
+                        </div>
+                        <div class="block-title">Subject Details</div>
+                        <div class="block">
+                            <div *ngFor="let subject of class.subjects; let j = index">
+                                <div class="element">
+                                    <label for="subject-name" class="key">Subject name:</label>
+                                    <input type="text" [name]="scheduleDetails + '_' + i + j" id="subject-name" class="value" [(ngModel)]="scheduleDetails.batches[i].subjects[j].name"/>
+                                </div>
+                                <div class="element">
+                                    <label for="hours" class="key">Hours:</label>
+                                    <input type="text" [name]="scheduleDetails + '_' + i + '_' + j" id="hours" class="value" [(ngModel)]="scheduleDetails.batches[i].subjects[j].hours"/>
+                                </div>
+                            </div>
+                            <button class="form-btn" (click)="addSubject(i)" type="button">Add one more subject</button>
+                        </div>
+                    </div>
+                    <button class="form-btn" (click)="addClass()" type="button">Add one more class</button>
+                </div>
+            </div>
+        </div>
+        <input type="submit" class="form-btn" value="Submit details"/>
     </form>
 </div>

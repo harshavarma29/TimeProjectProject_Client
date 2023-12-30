@@ -1,22 +1,56 @@
 .form-border {
-    border: 2px grey solid;
-    width: 360px;
+    width: 65%;
     margin: auto;
-    padding: 20px;
+    margin-top: 50px;
+    box-shadow: 0 0px 12px grey;
+    border-radius: 5px;
+    overflow: auto;
+    font-size: 18px;
+}
+
+.block-title { 
+    margin-top: 10px;
+    padding: 5px 5px 5px 0px;
+    margin: 16px;
+    margin-bottom: 0px;
+}
+
+.block {
+    overflow: auto;
+    margin: 16px;
+    margin-top: 0px;
+    box-shadow: 0 0 4px grey;
+    border-radius: 5px;
+}
+
+.element {
+    width: 48%;
+    float: left;
+    margin: 8px 4px;
+}
+
+.checkbox-element {
+    float: left;
+    width: 31%;
+    margin: 8px 4px;
 }
 
 .key {
-    display: block;
     font-size: 18px;
-    margin: 10px 0px;
+    margin: 12px;
+    margin-right: 4px;
 }
 
 .value {
-    border: 1px blue solid;
     border-radius: 50px;
-    width: 80%;
+    width: 200px;
     font-size: 18px;
     padding: 4px 12px;
+    margin: 4px;
+}
+
+.checkbox-value {
+    margin-left: 4px;
 }
 
 .add-subject-btn {
@@ -24,8 +58,26 @@
 }
 
 .add-subject-btn:hover {
-    background-color: blue;
     color: white;
     border: 1px white solid;
+    cursor: pointer;
+}
+
+.section {
+    margin-top: 8px;
+    overflow: auto;
+}
+
+.form-btn {
+    display: block;
+    margin: auto;
+    margin-bottom: 16px;
+    background-color: white;
+    border-radius: 50px;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.form-btn:hover {
     cursor: pointer;
 }
